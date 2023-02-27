@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS.css">
+    <script src="https://kit.fontawesome.com/a59b9b09ab.js" crossorigin="anonymous"></script>
+
+    <title>Temprature Converter</title </head>
+
+
+    <body>
+        <div class="container">
+            <div class="header">Temperature converter</div>
+            <div class="Emoji">
+                <i id="icon" class="fa-solid fa-face-grin"></i>
+                <p id="par"></p>
+
+            </div>
+            <div class="boxcontainer">
+                <div class="box1">
+                    <p>Degrees</p>
+                    <input type="number" class="takevalue" />
+                </div>
+                <div class="box1">
+                    <p>Type</p>
+                    <select name="" id="unit">   
+                     <option value="Fahrenheit">Fahrenheit</option>
+                     <option value="Celsius">Celsious</option>  
+                </select>
+                </div>
+            </div>
+            <div class="valuecontainer">
+                <p>Result</p>
+                <div class="value">
+                    <script>
+                        var Emoji = document.querySelector("#icon");
+                        var par = document.querySelector("#par");
+                        let temprature = () => {
+                            let opt = document.querySelector("#unit");
+                            let display = document.querySelector(".value");
+                            var a = document.querySelector(".takevalue").value;
+                            if (opt.value == "Celsius") {
+                                console.log(a, "C to F", opt.value)
+                                let F = a * (9 / 5) + 32
+                                display.innerHTML = F.toFixed(4) + "º F"
+                                if (F < 32) {
+                                    Emoji.style = "color:blue"
+                                    Emoji.className = "fa-solid fa-face-grimace"
+                                    par.innerHTML = "Cool at frezing point"
+                                } else if (F > 122) {
+                                    Emoji.style = "color:red"
+                                    Emoji.className = "fa-solid fa-face-dizzy"
+                                    par.innerHTML = "So Warm"
+                                } else {
+                                    Emoji.className = "fa-solid fa-face-grin"
+                                    par.innerHTML = ""
+                                    Emoji.style = "color:rgb(253, 174, 37)"
+                                }
+
+                            } else {
+                                console.log(a, "F to C", opt.value)
+                                let C = (a - 32) * (5 / 9)
+                                display.innerHTML = C.toFixed(4) + " º C"
+                                if (C < 0) {
+                                    Emoji.style = "color:blue"
+                                    Emoji.className = "fa-solid fa-face-grimace"
+                                    par.innerHTML = "Cool at frezing point"
+                                } else if (C > 50) {
+                                    Emoji.style = "color:red"
+                                    Emoji.className = "fa-solid fa-face-dizzy"
+                                    par.innerHTML = "So Warm"
+                                } else {
+                                    Emoji.className = "fa-solid fa-face-grin"
+                                    par.innerHTML = ""
+                                    Emoji.style = "color:rgb(253, 174, 37)"
+                                }
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+            <button onclick="temprature()" class="button">Convert</button>
+        </div>
+    </body>
+
+</html>
